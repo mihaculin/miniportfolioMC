@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(./venv/Scripts/pip install:*)",
+      "Bash(./venv/Scripts/python:*)",
+      "Bash(taskkill:*)",
+      "Bash(./venv/Scripts/uvicorn:*)",
+      "Bash(netstat:*)"
+    ]
+  }
+}
