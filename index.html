@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mihaela Culin – Behavior Change Coach & Mentor</title>
+  <style>
+    :root {
+      --lavender: #efbbff;
+      --lavender-dark: #d580ff;
+      --lavender-deep: #9b3dcc;
+      --lavender-soft: #f9eeff;
+      --lavender-mid: #e0a0ff;
+      --text: #2d2235;
+      --text-muted: #6b5a7a;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--lavender);
+      z-index: 100;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+
+    nav .logo {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--lavender-deep);
+      letter-spacing: 0.04em;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover {
+      color: var(--lavender-deep);
+    }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(145deg, var(--lavender-soft) 0%, var(--lavender) 60%, var(--lavender-dark) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .hero-inner {
+      max-width: 680px;
+    }
+
+    .hero-inner .tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.45);
+      color: var(--lavender-deep);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255,255,255,0.6);
+    }
+
+    .hero-inner h1 {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-inner p {
+      font-size: 1.1rem;
+      color: var(--text);
+      opacity: 0.85;
+      max-width: 520px;
+      margin: 0 auto 2rem;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.8rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      transition: all 0.25s;
+    }
+
+    .btn-primary {
+      background: var(--lavender-deep);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: #7a1faa;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(155,61,204,0.35);
+    }
+
+    .btn-outline {
+      background: rgba(255,255,255,0.5);
+      color: var(--text);
+      border: 1.5px solid rgba(45,34,53,0.3);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.8);
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--lavender-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      color: var(--text);
+      margin-bottom: 2.5rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--lavender);
+      margin-top: 0.6rem;
+      border-radius: 2px;
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--white);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      background: var(--lavender-soft);
+      border-radius: 16px;
+      padding: 1.8rem;
+      border: 1px solid var(--lavender);
+    }
+
+    .contact-info h3 {
+      font-size: 0.85rem;
+      font-family: 'Arial', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--lavender-deep);
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.9rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .contact-item .icon {
+      width: 20px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      color: var(--lavender-deep);
+    }
+
+    .contact-item a {
+      color: var(--lavender-deep);
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--lavender-soft);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .skill-card {
+      background: var(--white);
+      border: 1px solid var(--lavender);
+      border-radius: 14px;
+      padding: 1.4rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(155,61,204,0.12);
+    }
+
+    .skill-card h3 {
+      font-size: 0.92rem;
+      color: var(--lavender-deep);
+      margin-bottom: 0.5rem;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .skill-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-family: 'Arial', sans-serif;
+      line-height: 1.5;
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--white);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--lavender), var(--lavender-soft));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--lavender-deep);
+      border: 2px solid var(--white);
+      box-shadow: 0 0 0 2px var(--lavender);
+    }
+
+    .timeline-item .role {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--text);
+      margin-bottom: 0.1rem;
+    }
+
+    .timeline-item .company {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      color: var(--lavender-deep);
+      margin-bottom: 0.15rem;
+    }
+
+    .timeline-item .period {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-item ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .timeline-item ul li {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding-left: 1rem;
+      position: relative;
+      margin-bottom: 0.35rem;
+      line-height: 1.55;
+    }
+
+    .timeline-item ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.6em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--lavender-mid);
+    }
+
+    /* EDUCATION */
+    #education {
+      background: var(--lavender-soft);
+    }
+
+    .edu-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .edu-card {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 1.5rem 1.8rem;
+      border-left: 4px solid var(--lavender);
+      transition: border-color 0.2s;
+    }
+
+    .edu-card:hover {
+      border-color: var(--lavender-deep);
+    }
+
+    .edu-card h3 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .edu-card .school {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      color: var(--lavender-deep);
+      margin-bottom: 0.2rem;
+    }
+
+    .edu-card .period {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* CERTIFICATIONS */
+    .cert-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cert-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .cert-badge {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      background: var(--lavender);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cert-badge svg {
+      width: 18px;
+      height: 18px;
+      color: var(--lavender-deep);
+    }
+
+    .cert-item h3 {
+      font-size: 0.95rem;
+      color: var(--text);
+      margin-bottom: 0.2rem;
+    }
+
+    .cert-item p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    /* LANGUAGES */
+    #languages {
+      background: var(--white);
+    }
+
+    .lang-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .lang-card {
+      background: var(--lavender-soft);
+      border-radius: 14px;
+      padding: 1.4rem;
+      text-align: center;
+      border: 1px solid var(--lavender);
+    }
+
+    .lang-card .lang-name {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+
+    .lang-card .lang-level {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.82rem;
+      color: var(--lavender-deep);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .lang-dots {
+      display: flex;
+      justify-content: center;
+      gap: 5px;
+      margin-top: 0.7rem;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--lavender);
+    }
+
+    .dot.filled {
+      background: var(--lavender-deep);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 2rem;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.82rem;
+    }
+
+    footer span {
+      color: var(--lavender);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav ul {
+        gap: 1rem;
+      }
+
+      nav ul li:nth-child(n+4) {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Mihaela Culin</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#languages">Languages</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="tag">Behavior Change Coach &amp; Mentor</div>
+      <h1>Mihaela Culin</h1>
+      <p>
+        Guiding women through mindset transformation and emotional regulation on the path to a healthier relationship with food.
+      </p>
+      <div class="hero-links">
+        <a href="mailto:mihaelaculin@yahoo.com" class="btn btn-primary">Get in Touch</a>
+        <a href="https://www.linkedin.com/in/mihaela-culin-28a50a288" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">Who I Am</div>
+      <h2>About Me</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I am a dedicated Behavior Change Coach and Mentor with a diverse background spanning Psychonutrition, Account Management, and Human Resources.
+          </p>
+          <p>
+            Currently specializing in guiding women through the recovery process of eating disorders by fostering mindset transformation and emotional regulation.
+          </p>
+          <p>
+            I bring a versatile professional foundation that combines empathy-driven coaching, strong relationship management, and a genuine passion for helping people grow and heal.
+          </p>
+        </div>
+        <div class="contact-info">
+          <h3>Contact</h3>
+          <div class="contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            Cahul, Republic of Moldova
+          </div>
+          <div class="contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            +373 76 047 585
+          </div>
+          <div class="contact-item">
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <a href="mailto:mihaelaculin@yahoo.com">mihaelaculin@yahoo.com</a>
+          </div>
+          <div class="contact-item">
+            <svg class="icon" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+            <a href="https://www.linkedin.com/in/mihaela-culin-28a50a288" target="_blank">LinkedIn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+      <div class="section-label">What I Do</div>
+      <h2>Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Coaching &amp; Mentoring</h3>
+          <p>Behavioral change, emotional eating management, mindset transformation.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Relationship Management</h3>
+          <p>Strategic account management, client retention, and partnership growth.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Human Resources</h3>
+          <p>Full-cycle recruitment, candidate sourcing, and onboarding.</p>
+        </div>
+        <div class="skill-card">
+          <h3>Soft Skills</h3>
+          <p>Empathy-driven communication, conflict resolution, and public speaking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="container">
+      <div class="section-label">My Journey</div>
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+
+        <div class="timeline-item">
+          <div class="role">Mentor in Psychonutrition (Freelance)</div>
+          <div class="company">Echilibra – Remote</div>
+          <div class="period">Sep 2024 – Present</div>
+          <ul>
+            <li>Mentor clients in managing emotional eating and establishing sustainable, healthy relationships with food.</li>
+            <li>Support participants through deep behavioral shifts and mindset transformations within a structured program.</li>
+            <li>Conduct 1-to-1 consultations and facilitate personal development modules tailored to individual needs.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="role">Account Manager</div>
+          <div class="company">Tazz – Hybrid (Bucharest, Romania)</div>
+          <div class="period">Nov 2023 – Aug 2024</div>
+          <ul>
+            <li>Managed high-volume client partnerships, ensuring long-term satisfaction and platform performance.</li>
+            <li>Acted as a primary liaison between external partners and internal operational teams.</li>
+            <li>Optimized account performance through data-driven insights and business development strategies.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="role">Bank Employee</div>
+          <div class="company">Banca Transilvania – Romania</div>
+          <div class="period">Dec 2022 – Sep 2023</div>
+          <ul>
+            <li>Advised clients on financial products and retail banking services with a focus on customer education.</li>
+            <li>Managed daily financial operations and maintained strict regulatory compliance.</li>
+            <li>Built strong financial literacy and enhanced the branch's service reputation.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="role">Recruiter (HR Executive)</div>
+          <div class="company">ESSA Sales &amp; Distribution SA – Cluj-Napoca, Romania</div>
+          <div class="period">Jan 2022 – Nov 2022</div>
+          <ul>
+            <li>Executed full-cycle recruitment: sourcing, screening, and interviewing candidates across various roles.</li>
+            <li>Coordinated the hiring pipeline and served as the main point of contact for prospective employees.</li>
+            <li>Facilitated onboarding processes and supported general HR administrative functions.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="role">Brand Ambassador / Promotional Marketing Specialist</div>
+          <div class="company">Clock – Cluj-Napoca, Romania</div>
+          <div class="period">Sep 2020 – Jan 2022</div>
+          <ul>
+            <li>Represented major brands during large-scale promotional campaigns and events.</li>
+            <li>Engaged directly with diverse consumer groups to drive brand visibility and product adoption.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="role">Children's Animator / Activity Instructor</div>
+          <div class="company">CoHotels – Constanta, Romania</div>
+          <div class="period">Jun 2018 – Sep 2018</div>
+          <ul>
+            <li>Organized educational programs, creative workshops, and theater activities for children.</li>
+            <li>Led group fitness sessions, including aqua gym, ensuring a high-energy and safe environment.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="container">
+      <div class="section-label">Academic Background</div>
+      <h2>Education &amp; Certifications</h2>
+      <div class="edu-grid" style="margin-bottom: 2.5rem;">
+        <div class="edu-card">
+          <h3>Bachelor's Degree in Accounting and Management Information Systems</h3>
+          <div class="school">Faculty of Economics and Business Administration (FSEGA)</div>
+          <div class="period">Oct 2019 – Jul 2023</div>
+        </div>
+        <div class="edu-card">
+          <h3>High School Diploma – Sports and Exercise</h3>
+          <div class="school">Sports High School, Cluj-Napoca</div>
+          <div class="period">Sep 2015 – Jul 2019</div>
+        </div>
+      </div>
+
+      <div class="section-label" style="margin-bottom: 1.2rem;">Certifications</div>
+      <div class="cert-list">
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Certificate in Social Entrepreneurship</h3>
+            <p>American Corner &amp; Octavian Goga County Library (2018) — Focus: Entrepreneurship, strategic communication, and project planning.</p>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-badge">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Behavioral Change &amp; Nutrition Mentoring</h3>
+            <p>Internal Training / Ongoing professional development.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANGUAGES -->
+  <section id="languages">
+    <div class="container">
+      <div class="section-label">Communication</div>
+      <h2>Languages</h2>
+      <div class="lang-grid">
+        <div class="lang-card">
+          <div class="lang-name">Romanian</div>
+          <div class="lang-level">Native</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+          </div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">Russian</div>
+          <div class="lang-level">Advanced (C1)</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-name">English</div>
+          <div class="lang-level">Upper-Intermediate (B2)</div>
+          <div class="lang-dots">
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot filled"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 <span>Mihaela Culin</span>. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
